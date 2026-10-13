@@ -52,3 +52,28 @@ TrackHire.API/
 ## Author
 Divyarajsinh Jadeja
 [GitHub](https://github.com/divyarajsinhjadeja1901)
+
+
+## Testing
+
+Tests use xUnit, Moq, and the EF Core InMemory provider, and run automatically on every push through GitHub Actions.
+
+```
+dotnet test --collect:"XPlat Code Coverage"
+```
+
+- **38 tests, all passing**, covering services, repository, auth, JWT, and controllers
+- **75.1% line coverage** (263 of 350 lines; generated EF Core migrations excluded)
+- Per-user data isolation is verified by automated tests
+
+[![CI](https://github.com/divyarajsinhjadeja1901/TrackHire/actions/workflows/ci.yml/badge.svg)](https://github.com/divyarajsinhjadeja1901/TrackHire/actions)
+
+## Running locally
+
+The JWT signing key is not stored in the repo. Set your own before running:
+
+```
+cd TrackHire.API
+dotnet user-secrets init
+dotnet user-secrets set "Jwt:Key" "<any random string of 32+ characters>"
+```
